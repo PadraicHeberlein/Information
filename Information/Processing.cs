@@ -5,9 +5,9 @@ namespace Information
 {
     public static class Processing
     {
-        public static double Entropy(List<Symbol> message)
+        public static double Entropy(Message message)
         {
-            List<Symbol> alphabet = GetAlphabet(message);
+            Message alphabet = GetAlphabet(message);
             double entropy = 0.0;
 
             // TODO: Finish him!
@@ -15,13 +15,14 @@ namespace Information
             return entropy;
         }
         // Helper method for the Entropy() method above.
-        private static List<Symbol> GetAlphabet(List<Symbol> message)
+        private static Message GetAlphabet(Message message)
         {
-            List<Symbol> alphabet = new List<Symbol>();
+            Message alphabet = new Message();
+            int n = message.Length();
 
-            for (int i = 0; i < message.Count; i++)
+            for (int i = 0; i < n; i++)
             {
-                Symbol next = message[i];
+                Symbol next = message.Get(i);
 
                 if (!alphabet.Contains(next))
                     alphabet.Add(next);

@@ -2,6 +2,9 @@
 {
     public class Symbol
     {
+        const int eightBitBase = 256;
+        const int sixteenBitBase = 65536;
+
         private readonly int b;
         private int v;
         private double p;
@@ -10,6 +13,13 @@
         {
             v = value;
             b = theBase;
+            p = 0.0;
+        }
+
+        public Symbol(char c, bool eightBitAscii = true)
+        {
+            v = (int)c;
+            b = eightBitAscii ? eightBitBase : sixteenBitBase;
             p = 0.0;
         }
 

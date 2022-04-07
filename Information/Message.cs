@@ -17,7 +17,20 @@ namespace Information
 
         public Message(string theMessage)
         {
-            // TODO: finsish him!
+            payload = new List<Symbol>();
+            int n = theMessage.Length;
+
+            for (int i = 0; i < n; i++)
+            {
+                Symbol next = new Symbol(theMessage[i]);
+                payload.Add(next);
+            }
         }
+
+        public int Length() { return payload.Count; }
+        public Symbol Get(int index) { return payload[index]; }
+        public void Set(int index, Symbol s) { payload[index] = s; }
+        public bool Contains(Symbol s) { return payload.Contains(s);  }
+        public void Add(Symbol s) { payload.Add(s); }
     }
 }
