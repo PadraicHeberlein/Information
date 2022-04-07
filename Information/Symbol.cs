@@ -2,7 +2,8 @@
 {
     public class Symbol
     {
-        private int v, b;
+        private readonly int b;
+        private int v;
         private double p;
 
         public Symbol(int value, int theBase = 2)
