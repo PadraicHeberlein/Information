@@ -5,9 +5,9 @@ namespace TestInformation
 {
     public class TestBit
     {
-        Bit testZero = new Bit(0);
-        Bit testOne = new Bit(1);
-        BitComparer bComp = new BitComparer();
+        readonly Bit testZero = new Bit(0);
+        readonly Bit testOne = new Bit(1);
+        readonly BitComparer bComp = new BitComparer();
 
         [Fact]
         public void TestBit_TestConstructorForValueZero()
@@ -27,7 +27,8 @@ namespace TestInformation
             Assert.Equal(testZero, Bit.ZERO, bComp);
         }
 
-        [Fact] void TestBit_TestReadonlyONE()
+        [Fact]
+        public void TestBit_TestReadonlyONE()
         {
             Assert.Equal(testOne, Bit.ONE, bComp);
         }
