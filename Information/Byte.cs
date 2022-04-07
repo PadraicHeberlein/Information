@@ -28,15 +28,25 @@ namespace Information
 
         public Bit Get(int index) { return bits[index]; }
 
-        public void Set(int bit, int index)
+        private void CheckIndexAndBit(int index, int bit)
         {
             if (index < 0 || index >= SIZE)
                 throw new Exception("Index out of BYTE range.");
 
             if (!(bit == 1 || bit == 0))
                 throw new Exception("Set bit value is invalid.");
+        }
+
+        public void Set(int index, int bit)
+        {
+            CheckIndexAndBit(index, bit);
 
             bits[index] = bit == 1 ? Bit.ONE : Bit.ZERO;
+        }
+
+        public void FlipBit(int index)
+        {
+            
         }
 
         public bool Equals(Byte other)
