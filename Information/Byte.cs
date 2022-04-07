@@ -26,27 +26,38 @@ namespace Information
                 bits[i] = Processing.BitExtractor(aByte, i);
         }
 
-        public Bit Get(int index) { return bits[index]; }
+        public Bit Get(int index) 
+        {
+            CheckIndex(index);
 
-        private void CheckIndexAndBit(int index, int bit)
+            return bits[index]; 
+        }
+
+        private void CheckIndex(int index)
         {
             if (index < 0 || index >= SIZE)
                 throw new Exception("Index out of BYTE range.");
+        }
 
+        private void CheckBit(int bit)
+        {
             if (!(bit == 1 || bit == 0))
                 throw new Exception("Set bit value is invalid.");
         }
 
         public void Set(int index, int bit)
         {
-            CheckIndexAndBit(index, bit);
-
+            CheckIndex(index);
+            CheckBit(bit);
             bits[index] = bit == 1 ? Bit.ONE : Bit.ZERO;
         }
 
         public void FlipBit(int index)
         {
-            
+            CheckIndex(index);
+            bits[index] = bits[index].Equals(Bit.ZERO) ?
+                bits[index] = Bit.ONE :
+                bits[index] = Bit.ZERO;
         }
 
         public bool Equals(Byte other)

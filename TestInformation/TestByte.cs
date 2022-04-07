@@ -80,5 +80,13 @@ namespace TestInformation
             testByte.Set(1, 0);
             Assert.Equal(expected, testByte.Get(1), bitComp);
         }
+
+        [Fact]
+        public void TestByte_TestFlipplingBit()
+        {
+            Bit expected = new Bit(0);
+            testByte.FlipBit(2);
+            Assert.Equal(expected, testByte.Get(2), bitComp);
+        }
     }
 }
