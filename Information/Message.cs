@@ -27,10 +27,33 @@ namespace Information
             }
         }
 
+        public bool Equals(Message other)
+        {
+            for (int i = 0; i < payload.Count; i++)
+            {
+                if (!payload[i].Equals(other.payload[i]))
+                    return false;
+            }
+
+            return true;
+        }
         public int Length() { return payload.Count; }
         public Symbol Get(int index) { return payload[index]; }
         public void Set(int index, Symbol s) { payload[index] = s; }
         public bool Contains(Symbol s) { return payload.Contains(s);  }
         public void Add(Symbol s) { payload.Add(s); }
+    }
+
+    public class MessageComparer : IEqualityComparer<Message>
+    {
+        public bool Equals(Message x, Message y)
+        {
+            return x.Equals(y);
+        }
+
+        public int GetHashCode(Message obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

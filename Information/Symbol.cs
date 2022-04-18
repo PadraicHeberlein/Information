@@ -1,4 +1,7 @@
-﻿namespace Information
+﻿using System;
+using System.Collections.Generic;
+
+namespace Information
 {
     public class Symbol
     {
@@ -25,6 +28,20 @@
 
         public int Value { get => v; set => v = value; }
         public double Probability { get => p; set => p = value; }
+        public bool Equals(Symbol other) { return v == other.v; }
+    }
+
+    public class SymbolComparer : IEqualityComparer<Symbol>
+    {
+        public bool Equals(Symbol x, Symbol y)
+        {
+            return x.Equals(y);
+        }
+
+        public int GetHashCode(Symbol obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
