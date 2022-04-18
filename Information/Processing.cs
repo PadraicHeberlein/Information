@@ -15,7 +15,7 @@ namespace Information
             return entropy;
         }
         // Helper method for the Entropy() method above.
-        private static Message GetAlphabet(Message message)
+        public static Message GetAlphabet(Message message)
         {
             Message alphabet = new Message();
             int n = message.Length();
@@ -31,17 +31,18 @@ namespace Information
             return alphabet;
         }
         // Helper method for the Entropy() method above.
-        private static double GetProbabilityOf(Symbol symbol, List<Symbol> message)
+        public static double GetProbabilityOf(Symbol symbol, Message message)
         {
+            int n = message.Length();
             double probability = 0.0;
 
-            for (int i = 0; i < message.Count; i++)
+            for (int i = 0; i < n; i++)
             {
-                if (symbol.Equals(message[i]))
+                if (symbol.Equals(message.Get(i)))
                     probability++;
             }
 
-            return probability / message.Count;
+            return probability / n;
         }
         // Helper method for the Entropy() method above.
         private static void AssignProbabilities(List<Symbol> message, List<Symbol> alphabet)
