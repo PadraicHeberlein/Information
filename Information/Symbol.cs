@@ -5,8 +5,8 @@ namespace Information
 {
     public class Symbol
     {
-        const int eightBitBase = 256;
-        const int sixteenBitBase = 65536;
+        const int EIGHT_BIT_BASE = 256;
+        const int SIXTEEN_BIT_BASE = 65536;
 
         private readonly int b;
         private int v;
@@ -22,7 +22,7 @@ namespace Information
         public Symbol(char c, bool eightBitAscii = true)
         {
             v = (int)c;
-            b = eightBitAscii ? eightBitBase : sixteenBitBase;
+            b = eightBitAscii ? EIGHT_BIT_BASE : SIXTEEN_BIT_BASE;
             p = 0.0;
         }
 

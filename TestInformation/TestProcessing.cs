@@ -13,7 +13,6 @@ namespace TestInformation
         readonly BitComparer bitComp = new BitComparer();
         readonly Symbol l = new Symbol('l');
         readonly byte b = 0b00010000;
-        readonly char c = (char)0b0000000001000001;
         
         [Fact]
         public void TestProcessing_TestGetAlphabetMethod()
