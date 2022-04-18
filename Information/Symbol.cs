@@ -26,9 +26,17 @@ namespace Information
             p = 0.0;
         }
 
+        public Symbol(Symbol other)
+        {
+            v = other.v;
+            b = other.b;
+            p = other.p;
+        }
+
         public int Value { get => v; set => v = value; }
         public double Probability { get => p; set => p = value; }
         public bool Equals(Symbol other) { return v == other.v; }
+        public override string ToString() { return (char)v + ""; }
     }
 
     public class SymbolComparer : IEqualityComparer<Symbol>

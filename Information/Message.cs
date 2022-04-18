@@ -27,6 +27,18 @@ namespace Information
             }
         }
 
+        public Message(Message other)
+        {
+            payload = new List<Symbol>();
+            int n = other.Length();
+
+            for (int i = 0; i < n; i++)
+            {
+                Symbol next = new Symbol(other.payload[i]);
+                payload.Add(next);
+            }
+        }
+
         public bool Equals(Message other)
         {
             for (int i = 0; i < payload.Count; i++)
@@ -40,8 +52,25 @@ namespace Information
         public int Length() { return payload.Count; }
         public Symbol Get(int index) { return payload[index]; }
         public void Set(int index, Symbol s) { payload[index] = s; }
-        public bool Contains(Symbol s) { return payload.Contains(s);  }
         public void Add(Symbol s) { payload.Add(s); }
+        public void Add(char c) { payload.Add(new Symbol(c)); }
+        public bool Contains(Symbol s) 
+        {  
+            return payload.Contains(s, new SymbolComparer());  
+        }
+        public bool Contains(char c)
+        {
+            return payload.Contains(new Symbol(c), new SymbolComparer());
+        }
+        public override string ToString()
+        {
+            string s = "";
+
+            for (int i = 0; i < payload.Count; i++)
+                s += payload[i].ToString();
+
+            return s;
+        }
     }
 
     public class MessageComparer : IEqualityComparer<Message>
