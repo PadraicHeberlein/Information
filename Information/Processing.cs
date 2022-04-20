@@ -45,9 +45,15 @@ namespace Information
             return probability / n;
         }
         // Helper method for the Entropy() method above.
-        private static void AssignProbabilities(List<Symbol> message, List<Symbol> alphabet)
+        private static void AssignProbabilities(Message message, Message alphabet)
         {
-            throw new NotImplementedException();
+            int n = alphabet.Length();
+
+            for (int i = 0; i < n; i++)
+            {
+                Symbol next = alphabet.Get(i);
+                next.Probability = GetProbabilityOf(next, message);
+            }
         }
 
         // TODO: Need to add an arbitrary base log method...
